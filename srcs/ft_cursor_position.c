@@ -1,26 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   21sh.c                                             :+:      :+:    :+:   */
+/*   ft_cursor_position.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmadad <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/14 15:43:27 by hmadad            #+#    #+#             */
-/*   Updated: 2017/03/15 15:57:47 by hmadad           ###   ########.fr       */
+/*   Created: 2017/03/16 11:42:08 by hmadad            #+#    #+#             */
+/*   Updated: 2017/03/16 13:28:09 by hmadad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-int		ft_21sh(char ***env)
+void	ft_reset_position(t_shell **shell)
 {
-	t_shell		*shell;
+	t_shell	*s;
 
-	if (!(shell = (t_shell *)malloc(sizeof(t_shell))))
-		return (0);
-	shell->env = *env;
-	shell->history = ft_init_term(&shell);
-	ft_prompt(*env);
-	ft_read_commande(&shell);
-	return (1);
+	s = *shell;
+	s->position = 0;
+	s->pos_max = 0;
 }

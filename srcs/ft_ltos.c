@@ -6,7 +6,7 @@
 /*   By: hmadad <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/15 13:45:21 by hmadad            #+#    #+#             */
-/*   Updated: 2017/03/15 14:13:43 by hmadad           ###   ########.fr       */
+/*   Updated: 2017/03/16 14:06:41 by hmadad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ char	*ft_ltos(t_list **commande)
 {
 	t_list	*c;
 	t_list	*del;
-	char		*str;
+	char	*str;
 
 	if (!(*commande))
 		return (0);

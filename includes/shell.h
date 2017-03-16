@@ -6,7 +6,7 @@
 /*   By: hmadad <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/14 14:43:05 by hmadad            #+#    #+#             */
-/*   Updated: 2017/03/15 14:06:07 by hmadad           ###   ########.fr       */
+/*   Updated: 2017/03/16 14:06:38 by hmadad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@
 
 typedef struct	s_shell
 {
+	int					position;
+	int					pos_max;
 	char				*line;
 	char				**path;
 	char				**all;
@@ -51,7 +53,9 @@ typedef struct		s_history
 int				ft_21sh(char ***env);
 t_history		*ft_init_term(t_shell **shell);
 void			ft_read_commande(t_shell **shell);
+void			ft_history_key(t_shell **shell, char *buf);
 char			*ft_ltos(t_list **commande);
+void			ft_reset_position(t_shell **shell);
 t_history		*ft_listenew(char *content);
 void			ft_liste_push_back(t_history **lst, t_history *new);
 void			ft_liste_push_front(t_history **lst, t_history *new);
@@ -62,5 +66,7 @@ int				ft_unsetenv(char ***env, char *str);
 char			*get_pwd();
 void			ft_prompt(char **env);
 char			*ft_find_last_pwd(char *pwd);
+char			**ft_realloc(char ***ta, char *str);
+char			**ft_unalloc(char ***ta, char *str);
 
 #endif

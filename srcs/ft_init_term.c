@@ -6,7 +6,7 @@
 /*   By: hmadad <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/14 15:47:50 by hmadad            #+#    #+#             */
-/*   Updated: 2017/03/14 17:13:46 by hmadad           ###   ########.fr       */
+/*   Updated: 2017/03/16 13:54:24 by hmadad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ int		ft_find_term_db(char *term_name)
 int		ft_modif_term(t_shell **shell)
 {
 	struct termios	term;
-	struct termios	default_term;
 	t_shell			*s;
 
 	s = *shell;

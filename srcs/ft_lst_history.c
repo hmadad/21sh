@@ -6,7 +6,7 @@
 /*   By: hmadad <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/14 15:17:49 by hmadad            #+#    #+#             */
-/*   Updated: 2017/03/14 15:39:46 by hmadad           ###   ########.fr       */
+/*   Updated: 2017/03/15 15:15:50 by hmadad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ t_history	*ft_listenew(char *content)
 void		ft_liste_push_back(t_history **lst, t_history *new)
 {
 	t_history	*list;
-	t_history	*prev;
 
 	list = *lst;
 	if (list)
@@ -39,6 +38,7 @@ void		ft_liste_push_back(t_history **lst, t_history *new)
 			list = list->next;
 		list->next = new;
 		new->previous = list;
+		new->next = NULL;
 	}
 	else
 		*lst = ft_listenew(new->content);
