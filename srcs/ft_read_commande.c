@@ -6,7 +6,7 @@
 /*   By: hmadad <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/14 17:00:05 by hmadad            #+#    #+#             */
-/*   Updated: 2017/03/31 10:38:35 by hmadad           ###   ########.fr       */
+/*   Updated: 2017/03/31 11:37:52 by hmadad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,18 +69,37 @@ void	ft_read_commande(t_shell **shell)
 		}
 		else if (buf[0] == 27 && ft_strlen(buf) == 3 && buf[2] != '3')
 		{
-			//ft_putstr("Je suis dans les arrow\n");
 			ft_history_key(shell, buf);
 		}
 		else if (buf[0] == 27 && ft_strlen(buf) == 1)
 			ft_escape(shell);
 		else if (buf[0] == 127 || (buf[0] == 27 && buf[2] == '3')) //126 = del et 127 = backspace
 		{
-			/*//ft_putstr("Je suis dans les touche supp\n");
 			if (s->pos_max > 0)
 			{
 				if (buf[0] == 127)
-					;
+				{
+					if (s->position != 0)
+					{
+						len = s->pos_max - (s->pos_max - s->position);
+						while (len)
+						{
+							if ((cap = tgetstr("le", NULL)) == NULL)
+								ft_putstr("Cannot move the cursor to the right\n");
+							else
+								tputs(cap, 0, ft_putc);
+							len--;
+						}
+						if ((cap = tgetstr("cd", NULL)) == NULL)
+							ft_putstr("Cannot delete line blow the cursor position\n");
+						else
+							tputs(cap, 0, ft_putc);
+						s->line = ft_strdelat(s->line, s->position - 1);
+						s->pos_max -= 1;
+						s->position -= 1;
+						ft_putstr(s->line);
+					}
+				}
 				else
 				{
 					if (s->pos_max != s->position)
@@ -98,16 +117,16 @@ void	ft_read_commande(t_shell **shell)
 							ft_putstr("Cannot delete line blow the cursor position\n");
 						else
 							tputs(cap, 0, ft_putc);
-						s->line = ft_strdelat(s->line, s->position);
+						cap = ft_strdelat(s->line, s->position);
+						s->line = ft_strsub(cap, 0, ft_strlen(cap) - 1);
 						s->pos_max -= 1;
 						ft_putstr(s->line);
 					}
 				}
-			}*/
+			}
 		}
 		else
 		{
-			//ft_putstr("Je suis dans les touche normales\n");
 			if (s->line)
 			{
 				if (s->position == s->pos_max)
@@ -117,17 +136,21 @@ void	ft_read_commande(t_shell **shell)
 				}
 				else
 				{
-					if ((cap = tgetstr("im", NULL)) == NULL)
-						ft_putstr("Cannot insere caractere\n");
+					len = s->pos_max - (s->pos_max - s->position);
+					while (len)
+					{
+						if ((cap = tgetstr("le", NULL)) == NULL)
+							ft_putstr("Cannot move the cursor to the right\n");
+						else
+							tputs(cap, 0, ft_putc);
+						len--;
+					}
+					if ((cap = tgetstr("cd", NULL)) == NULL)
+						ft_putstr("Cannot delete line blow the cursor position\n");
 					else
 						tputs(cap, 0, ft_putc);
-					cap = ft_straddat(s->line, buf[0], s->position);
-					s->line = ft_strsub(cap, 0, ft_strlen(cap) - 1);
-					ft_putstr(buf);
-					if ((cap = tgetstr("ei", NULL)) == NULL)
-						ft_putstr("Cannot delete insere caractere\n");
-					else
-						tputs(cap, 0, ft_putc);
+					s->line = ft_straddat(s->line, buf[0], s->position);
+					ft_putstr(s->line);
 				}
 			}
 			else
@@ -138,6 +161,5 @@ void	ft_read_commande(t_shell **shell)
 			s->pos_max += 1;
 			s->position += 1;
 		}
-		//printf("\nposition = %d\npos_max = %d\n", s->position, s->pos_max);
 	}
 }

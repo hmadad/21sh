@@ -6,7 +6,7 @@
 /*   By: hmadad <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/14 15:17:49 by hmadad            #+#    #+#             */
-/*   Updated: 2017/03/28 13:06:15 by hmadad           ###   ########.fr       */
+/*   Updated: 2017/03/31 11:14:43 by hmadad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,11 @@ void		ft_liste_push_front(t_history **lst, t_history *new)
 	list = *lst;
 	if (list)
 	{
+		while (list->previous)
+			list = list->previous;
 		list->previous = new;
 		new->next = list;
+		new->previous = NULL;
 		*lst = new;
 	}
 	else
