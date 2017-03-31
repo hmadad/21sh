@@ -1,23 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strdelat.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmadad <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/29 15:20:50 by hmadad            #+#    #+#             */
-/*   Updated: 2017/03/29 15:25:03 by hmadad           ###   ########.fr       */
+/*   Created: 2017/03/29 14:49:13 by hmadad            #+#    #+#             */
+/*   Updated: 2017/03/29 14:57:34 by hmadad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "shell.h"
+#include "libft.h"
 
-int		main()
+char	*ft_strdelat(char *str, size_t position)
 {
-	char	*lol;
+	size_t	i;
+	size_t	j;
+	char	*new;
 
-	lol = ft_strdup("abcde");
-	lol = ft_strdelat(lol, 0);
-	ft_putendl(lol);
-	return (0);
+	if (!str)
+		return (0);
+	i = 0;
+	j = 0;
+	if (!(new = (char *)malloc(sizeof(char) * ft_strlen(str))))
+		return (0);
+	while (str[j])
+	{
+		if (j == position)
+			j++;
+		new[i] = str[j];
+		i++;
+		j++;
+	}
+	new[i] = '\0';
+	return (new);
 }

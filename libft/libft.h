@@ -6,7 +6,7 @@
 /*   By: hmadad <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/04 08:03:51 by hmadad            #+#    #+#             */
-/*   Updated: 2017/03/14 12:49:21 by hmadad           ###   ########.fr       */
+/*   Updated: 2017/03/29 14:58:47 by hmadad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,5 +98,8 @@ void			ft_freetab(char ***tab);
 char			**ft_duptab2d(char **tab);
 t_list			*ft_stol(char *str);
 void			ft_lst_add_at(t_list **lst, t_list *new, int position);
+char			*ft_ctostr(char c);
+char			*ft_straddat(char *str, char c, size_t position);
+char			*ft_strdelat(char *str, size_t position);
 
 #endif

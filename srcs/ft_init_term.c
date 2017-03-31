@@ -6,7 +6,7 @@
 /*   By: hmadad <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/14 15:47:50 by hmadad            #+#    #+#             */
-/*   Updated: 2017/03/16 13:54:24 by hmadad           ###   ########.fr       */
+/*   Updated: 2017/03/28 12:15:36 by hmadad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ t_history	*ft_load_history()
 		ft_putstr("Cannot open history file\n");
 		return (0);
 	}
+	history = NULL;
 	while (get_next_line(fd, &line) != 0)
 	{
 		ft_liste_push_front(&history, ft_listenew(line));

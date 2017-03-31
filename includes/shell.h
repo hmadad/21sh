@@ -6,7 +6,7 @@
 /*   By: hmadad <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/14 14:43:05 by hmadad            #+#    #+#             */
-/*   Updated: 2017/03/16 14:06:38 by hmadad           ###   ########.fr       */
+/*   Updated: 2017/03/29 16:16:42 by hmadad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <signal.h>
 # include <termcap.h>
 # include <term.h>
+# include <stdio.h>
 
 # define RED   "\x1B[31m"
 # define GRN   "\x1B[32m"

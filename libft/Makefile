@@ -6,7 +6,7 @@
 #    By: hmadad <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/06 11:04:43 by hmadad            #+#    #+#              #
-#    Updated: 2017/02/20 14:14:05 by hmadad           ###   ########.fr        #
+#    Updated: 2017/03/29 14:56:54 by hmadad           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -81,6 +81,9 @@ SRCS = ft_memset.c \
 	ft_strbchr.c \
 	ft_free_tab.c \
 	ft_duptab2d.c \
+	ft_ctostr.c \
+	ft_straddat.c \
+	ft_strdelat.c \
 
 OBJECTS = $(SRCS:.c=.o)
 

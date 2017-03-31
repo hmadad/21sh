@@ -1,26 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   21sh.c                                             :+:      :+:    :+:   */
+/*   ft_ctostr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hmadad <hmadad@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hmadad <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/14 15:43:27 by hmadad            #+#    #+#             */
-/*   Updated: 2017/03/28 12:15:39 by hmadad           ###   ########.fr       */
+/*   Created: 2017/03/29 11:18:15 by hmadad            #+#    #+#             */
+/*   Updated: 2017/03/29 11:19:07 by hmadad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "shell.h"
+#include "libft.h"
 
-int		ft_21sh(char ***env)
+char	*ft_ctostr(char c)
 {
-	t_shell		*shell;
+	char	*new;
 
-	if (!(shell = (t_shell *)malloc(sizeof(t_shell))))
+	if (!(new = (char *)malloc(sizeof(char) * (2))))
 		return (0);
-	shell->env = *env;
-	shell->history = ft_init_term(&shell);
-	ft_prompt(*env);
-	ft_read_commande(&shell);
-	return (1);
+	new[0] = c;
+	new[1] = '\0';
+	return (new);
 }
+
