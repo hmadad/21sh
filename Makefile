@@ -6,7 +6,7 @@
 #    By: hmadad <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/12/12 14:56:33 by hmadad            #+#    #+#              #
-#    Updated: 2017/03/16 12:07:19 by hmadad           ###   ########.fr        #
+#    Updated: 2017/03/31 12:58:49 by hmadad           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,14 +17,15 @@ SRC_PATH = ./srcs
 SRCS_NAME = ft_21sh.c \
 			ft_env.c \
 			ft_find_last_pwd.c \
-			ft_history.c \
+			ft_arrow_key.c \
 			ft_init_term.c \
 			ft_lst_history.c \
 			ft_ltos.c \
-			ft_cursor_position.c \
 			ft_prompt.c \
 			ft_read_commande.c \
 			ft_realloc.c \
+			ft_print_char.c \
+			ft_termcap_delete.c \
 			main.c \
 
 SRC = $(addprefix $(SRC_PATH)/, $(SRCS_NAME))

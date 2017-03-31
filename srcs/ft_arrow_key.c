@@ -6,7 +6,7 @@
 /*   By: hmadad <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/15 14:14:15 by hmadad            #+#    #+#             */
-/*   Updated: 2017/03/29 16:16:40 by hmadad           ###   ########.fr       */
+/*   Updated: 2017/03/31 14:05:43 by hmadad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,27 +16,25 @@ int		ft_up_arrow(t_shell **shell)
 {
 	t_history	*h;
 	t_shell		*s;
-	char		*cap;
 
 	s = *shell;
 	h = s->history;
+	if (s->s_h != 0)
+	{
+		if (h->next)
+			s->history = h->next;
+		h = s->history;
+	}
+	s->line = ft_strdup(h->content);
 	s->pos_max -= (s->pos_max - s->position);
 	while (s->pos_max)
 	{
-		if ((cap = tgetstr("le", NULL)) == NULL)
-			ft_putstr("Cannot move the cursor to the right\n");
-		else
-			tputs(cap, 0, ft_putc);
+		tputs(tgetstr("le", NULL), 0, ft_putc);
 		s->pos_max--;
 	}
-	if ((cap = tgetstr("cd", NULL)) == NULL)
-		ft_putstr("Cannot delete line blow the cursor position\n");
-	else
-		tputs(cap, 0, ft_putc);
-	s->line = ft_strdup(h->content);
+	tputs(tgetstr("cd", NULL), 0, ft_putc);
 	ft_putstr(h->content);
-	if (h->next)
-		s->history = h->next;
+	s->s_h = 1;
 	return (ft_strlen(h->content));
 }
 
@@ -44,27 +42,25 @@ int		ft_down_arrow(t_shell **shell)
 {
 	t_history	*h;
 	t_shell		*s;
-	char		*cap;
 
 	s = *shell;
 	h = s->history;
+	if (s->s_h != 0)
+	{
+		if (h->previous)
+			s->history = h->previous;
+		h = s->history;
+	}
+	s->line = ft_strdup(h->content);
 	s->pos_max -= (s->pos_max - s->position);
 	while (s->pos_max)
 	{
-		if ((cap = tgetstr("le", NULL)) == NULL)
-			ft_putstr("Cannot move the cursor to the right\n");
-		else
-			tputs(cap, 0, ft_putc);
+		tputs(tgetstr("le", NULL), 0, ft_putc);
 		s->pos_max--;
 	}
-	if ((cap = tgetstr("cd", NULL)) == NULL)
-		ft_putstr("Cannot delete line blow the cursor position\n");
-	else
-		tputs(cap, 0, ft_putc);
-	s->line = ft_strdup(h->content);
+	tputs(tgetstr("cd", NULL), 0, ft_putc);
 	ft_putstr(h->content);
-	if (h->previous)
-		s->history = h->previous;
+	s->s_h = 1;
 	return (ft_strlen(h->content));
 }
 

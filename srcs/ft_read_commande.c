@@ -6,7 +6,7 @@
 /*   By: hmadad <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/14 17:00:05 by hmadad            #+#    #+#             */
-/*   Updated: 2017/03/31 11:37:52 by hmadad           ###   ########.fr       */
+/*   Updated: 2017/03/31 14:05:45 by hmadad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,13 +49,10 @@ void	ft_read_commande(t_shell **shell)
 {
 	t_shell		*s;
 	char		buf[5];
-	char		*cap;
-	int			len;
 
 	s = *shell;
 	while (42)
 	{
-		len = 0;
 		ft_bzero(buf, 5);
 		read(0, buf, 4);
 		if (ft_strcmp(buf, "\n") == 0)
@@ -65,101 +62,15 @@ void	ft_read_commande(t_shell **shell)
 			ft_strdel(&(s->line));
 			ft_putchar('\n');
 			ft_prompt(s->env);
-			ft_reset_position(shell);
+			s->s_h = 0;
 		}
 		else if (buf[0] == 27 && ft_strlen(buf) == 3 && buf[2] != '3')
-		{
 			ft_history_key(shell, buf);
-		}
 		else if (buf[0] == 27 && ft_strlen(buf) == 1)
 			ft_escape(shell);
-		else if (buf[0] == 127 || (buf[0] == 27 && buf[2] == '3')) //126 = del et 127 = backspace
-		{
-			if (s->pos_max > 0)
-			{
-				if (buf[0] == 127)
-				{
-					if (s->position != 0)
-					{
-						len = s->pos_max - (s->pos_max - s->position);
-						while (len)
-						{
-							if ((cap = tgetstr("le", NULL)) == NULL)
-								ft_putstr("Cannot move the cursor to the right\n");
-							else
-								tputs(cap, 0, ft_putc);
-							len--;
-						}
-						if ((cap = tgetstr("cd", NULL)) == NULL)
-							ft_putstr("Cannot delete line blow the cursor position\n");
-						else
-							tputs(cap, 0, ft_putc);
-						s->line = ft_strdelat(s->line, s->position - 1);
-						s->pos_max -= 1;
-						s->position -= 1;
-						ft_putstr(s->line);
-					}
-				}
-				else
-				{
-					if (s->pos_max != s->position)
-					{
-						len = s->pos_max - (s->pos_max - s->position);
-						while (len)
-						{
-							if ((cap = tgetstr("le", NULL)) == NULL)
-								ft_putstr("Cannot move the cursor to the right\n");
-							else
-								tputs(cap, 0, ft_putc);
-							len--;
-						}
-						if ((cap = tgetstr("cd", NULL)) == NULL)
-							ft_putstr("Cannot delete line blow the cursor position\n");
-						else
-							tputs(cap, 0, ft_putc);
-						cap = ft_strdelat(s->line, s->position);
-						s->line = ft_strsub(cap, 0, ft_strlen(cap) - 1);
-						s->pos_max -= 1;
-						ft_putstr(s->line);
-					}
-				}
-			}
-		}
+		else if (buf[0] == 127 || (buf[0] == 27 && buf[2] == '3'))
+			ft_delete_char(shell, buf);
 		else
-		{
-			if (s->line)
-			{
-				if (s->position == s->pos_max)
-				{
-					s->line = ft_free_join(s->line, buf, 'L');
-					ft_putstr(buf);
-				}
-				else
-				{
-					len = s->pos_max - (s->pos_max - s->position);
-					while (len)
-					{
-						if ((cap = tgetstr("le", NULL)) == NULL)
-							ft_putstr("Cannot move the cursor to the right\n");
-						else
-							tputs(cap, 0, ft_putc);
-						len--;
-					}
-					if ((cap = tgetstr("cd", NULL)) == NULL)
-						ft_putstr("Cannot delete line blow the cursor position\n");
-					else
-						tputs(cap, 0, ft_putc);
-					s->line = ft_straddat(s->line, buf[0], s->position);
-					ft_putstr(s->line);
-				}
-			}
-			else
-			{
-				s->line = ft_strdup(buf);
-				ft_putstr(buf);
-			}
-			s->pos_max += 1;
-			s->position += 1;
-		}
+			ft_print_char(shell, buf);
 	}
 }

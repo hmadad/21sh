@@ -6,7 +6,7 @@
 /*   By: hmadad <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/14 15:47:50 by hmadad            #+#    #+#             */
-/*   Updated: 2017/03/28 12:15:36 by hmadad           ###   ########.fr       */
+/*   Updated: 2017/03/31 13:12:03 by hmadad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ int		ft_modif_term(t_shell **shell)
 	t_shell			*s;
 
 	s = *shell;
+	s->s_h = 0;
 	if (tcgetattr(0, &term) == -1)
 	{
 		ft_putstr("Error cannot fill up the term struct\n");
@@ -46,11 +47,10 @@ int		ft_modif_term(t_shell **shell)
 	}
 	ft_putstr("Term struct successfully filled up\n");
 	s->default_term = term;
-	term.c_lflag &= ~(ICANON); // Met le terminal en mode canonique.
-	term.c_lflag &= ~(ECHO); // les touches tapées ne s'inscriront plus dans le terminal
+	term.c_lflag &= ~(ICANON);
+	term.c_lflag &= ~(ECHO);
 	term.c_cc[VMIN] = 1;
 	term.c_cc[VTIME] = 0;
-	// On applique les changements :
 	if (tcsetattr(0, TCSADRAIN, &term) == -1)
 	{
 		ft_putstr("Cannot apply the change on the term struct\n");

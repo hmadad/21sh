@@ -6,7 +6,7 @@
 /*   By: hmadad <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/14 14:43:05 by hmadad            #+#    #+#             */
-/*   Updated: 2017/03/29 16:16:42 by hmadad           ###   ########.fr       */
+/*   Updated: 2017/03/31 14:05:41 by hmadad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@
 
 typedef struct	s_shell
 {
+	int					s_h;
 	int					position;
 	int					pos_max;
 	char				*line;
@@ -69,5 +70,7 @@ void			ft_prompt(char **env);
 char			*ft_find_last_pwd(char *pwd);
 char			**ft_realloc(char ***ta, char *str);
 char			**ft_unalloc(char ***ta, char *str);
+void			ft_delete_char(t_shell **shell, char *buf);
+void			ft_print_char(t_shell **shell, char *buf);
 
 #endif
