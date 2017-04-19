@@ -1,22 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_find_last_pwd.c                                 :+:      :+:    :+:   */
+/*   ft_exit.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmadad <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/14 16:57:00 by hmadad            #+#    #+#             */
-/*   Updated: 2017/04/17 13:03:29 by hmadad           ###   ########.fr       */
+/*   Created: 2017/01/24 14:40:25 by hmadad            #+#    #+#             */
+/*   Updated: 2017/04/17 13:03:02 by hmadad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-char	*ft_find_last_pwd(char *pwd)
+void		ft_exit(t_shell **shell)
 {
-	if (!(ft_strchr(pwd, '/')))
-		return (pwd);
-	else
-		pwd = ft_strchr(pwd, '/') + 1;
-	return (ft_find_last_pwd(pwd));
+	t_shell	*s;
+
+	s = *shell;
+	ft_freetab(&(s->env));
+	if (s->line)
+		ft_strdel(&(s->line));
+	exit(EXIT_SUCCESS);
 }

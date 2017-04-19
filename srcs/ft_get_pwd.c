@@ -1,22 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_find_last_pwd.c                                 :+:      :+:    :+:   */
+/*   ft_get_pwd.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmadad <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/14 16:57:00 by hmadad            #+#    #+#             */
-/*   Updated: 2017/04/17 13:03:29 by hmadad           ###   ########.fr       */
+/*   Created: 2017/01/18 10:28:46 by hmadad            #+#    #+#             */
+/*   Updated: 2017/04/19 12:54:38 by hmadad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-char	*ft_find_last_pwd(char *pwd)
+char	*get_pwd(void)
 {
-	if (!(ft_strchr(pwd, '/')))
-		return (pwd);
-	else
-		pwd = ft_strchr(pwd, '/') + 1;
-	return (ft_find_last_pwd(pwd));
+	char	*new;
+	int		len;
+
+	len = 1;
+	if (!(new = (char *)malloc(sizeof(char) * (len))))
+		return (0);
+	while (!(new = getcwd(new, len)))
+	{
+		len += 1;
+		free(new);
+		if (!(new = (char *)malloc(sizeof(char) * (len))))
+			return (0);
+	}
+	return (new);
 }

@@ -6,7 +6,7 @@
 /*   By: hmadad <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/14 17:00:05 by hmadad            #+#    #+#             */
-/*   Updated: 2017/04/17 11:52:22 by hmadad           ###   ########.fr       */
+/*   Updated: 2017/04/19 13:03:00 by hmadad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,10 +67,10 @@ void	ft_read_commande(t_shell **shell)
 		read(0, buf, 4);
 		if (ft_strcmp(buf, "\n") == 0)
 		{
-			ft_update_history(&s);
-			//ft_exec_commande(shell);
-			ft_strdel(&(s->line));
 			ft_putchar('\n');
+			ft_update_history(&s);
+			ft_exec_commande(shell);
+			ft_strdel(&(s->line));
 			ft_prompt(s->env);
 			ft_reset_pos(shell);
 			s->s_h = 0;
