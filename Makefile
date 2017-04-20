@@ -6,7 +6,7 @@
 #    By: hmadad <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/12/12 14:56:33 by hmadad            #+#    #+#              #
-#    Updated: 2017/03/31 12:58:49 by hmadad           ###   ########.fr        #
+#    Updated: 2017/04/19 12:55:39 by hmadad           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,17 @@ SRCS_NAME = ft_21sh.c \
 			ft_realloc.c \
 			ft_print_char.c \
 			ft_termcap_delete.c \
+			ft_strtrimb.c \
+			ft_exec_commande.c \
+			ft_change_home_sign.c \
+			ft_exit.c \
+			ft_commande.c \
+			ft_echo.c \
+			ft_prepare_cd.c \
+			ft_cd.c \
+			ft_cd_error.c \
+			ft_trim.c \
+			ft_get_pwd.c \
 			main.c \
 
 SRC = $(addprefix $(SRC_PATH)/, $(SRCS_NAME))

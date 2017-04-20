@@ -6,7 +6,7 @@
 /*   By: hmadad <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/14 17:00:05 by hmadad            #+#    #+#             */
-/*   Updated: 2017/03/31 14:05:45 by hmadad           ###   ########.fr       */
+/*   Updated: 2017/04/19 15:34:39 by hmadad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,15 @@ void	ft_escape(t_shell **shell)
 	exit(0);
 }
 
+void	ft_reset_pos(t_shell **shell)
+{
+	t_shell	*s;
+
+	s = *shell;
+	s->position = 0;
+	s->pos_max = 0;
+}
+
 void	ft_update_history(t_shell **shell)
 {
 	int			fd;
@@ -31,6 +40,7 @@ void	ft_update_history(t_shell **shell)
 
 	s = *shell;
 	tmp = ft_strtrim(s->line);
+	s->line = ft_strtrimb(tmp);
 	if (tmp && ft_strcmp(tmp, "") != 0)
 	{
 		if ((fd = open(".history", O_WRONLY | O_APPEND)) == -1)
@@ -57,11 +67,12 @@ void	ft_read_commande(t_shell **shell)
 		read(0, buf, 4);
 		if (ft_strcmp(buf, "\n") == 0)
 		{
-			ft_update_history(&s);
-			//ft_exec_commande(shell);
-			ft_strdel(&(s->line));
 			ft_putchar('\n');
+			ft_update_history(&s);
+			ft_exec_commande(shell);
+			ft_strdel(&(s->line));
 			ft_prompt(s->env);
+			ft_reset_pos(shell);
 			s->s_h = 0;
 		}
 		else if (buf[0] == 27 && ft_strlen(buf) == 3 && buf[2] != '3')

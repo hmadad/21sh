@@ -1,27 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_prompt.c                                        :+:      :+:    :+:   */
+/*   ft_get_pwd.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmadad <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/02/01 11:17:06 by hmadad            #+#    #+#             */
-/*   Updated: 2017/04/19 13:43:10 by hmadad           ###   ########.fr       */
+/*   Created: 2017/01/18 10:28:46 by hmadad            #+#    #+#             */
+/*   Updated: 2017/04/19 12:54:38 by hmadad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-void	ft_prompt(char **env)
+char	*get_pwd(void)
 {
-	char	*tmp;
+	char	*new;
+	int		len;
 
-	ft_putstr(GRN "-> " CYN);
-	if ((tmp = ft_getenv(env, "PWD")))
-		ft_putstr(ft_find_last_pwd(tmp));
-	ft_putstr("> " RESET);
-	if ((tmp = tgetstr("sc", NULL)) == NULL)
-		ft_putstr("Cannot save the cursor position\n");
-	else
-		tputs(tmp, 0, ft_putc);
+	len = 1;
+	if (!(new = (char *)malloc(sizeof(char) * (len))))
+		return (0);
+	while (!(new = getcwd(new, len)))
+	{
+		len += 1;
+		free(new);
+		if (!(new = (char *)malloc(sizeof(char) * (len))))
+			return (0);
+	}
+	return (new);
 }

@@ -1,27 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_prompt.c                                        :+:      :+:    :+:   */
+/*   ft_exit.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmadad <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/02/01 11:17:06 by hmadad            #+#    #+#             */
-/*   Updated: 2017/04/19 13:43:10 by hmadad           ###   ########.fr       */
+/*   Created: 2017/01/24 14:40:25 by hmadad            #+#    #+#             */
+/*   Updated: 2017/04/17 13:03:02 by hmadad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-void	ft_prompt(char **env)
+void		ft_exit(t_shell **shell)
 {
-	char	*tmp;
+	t_shell	*s;
 
-	ft_putstr(GRN "-> " CYN);
-	if ((tmp = ft_getenv(env, "PWD")))
-		ft_putstr(ft_find_last_pwd(tmp));
-	ft_putstr("> " RESET);
-	if ((tmp = tgetstr("sc", NULL)) == NULL)
-		ft_putstr("Cannot save the cursor position\n");
-	else
-		tputs(tmp, 0, ft_putc);
+	s = *shell;
+	ft_freetab(&(s->env));
+	if (s->line)
+		ft_strdel(&(s->line));
+	exit(EXIT_SUCCESS);
 }

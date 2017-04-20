@@ -6,7 +6,7 @@
 /*   By: hmadad <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/14 14:43:05 by hmadad            #+#    #+#             */
-/*   Updated: 2017/03/31 14:05:41 by hmadad           ###   ########.fr       */
+/*   Updated: 2017/04/19 15:34:44 by hmadad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,5 +72,20 @@ char			**ft_realloc(char ***ta, char *str);
 char			**ft_unalloc(char ***ta, char *str);
 void			ft_delete_char(t_shell **shell, char *buf);
 void			ft_print_char(t_shell **shell, char *buf);
+char			*ft_strtrimb(char *str);
+void			ft_exec_commande(t_shell **shell);
+char			*ft_change_home_sign(char *line, char *home, char c);
+void			ft_exit(t_shell **shell);
+void			ft_check_commande(t_shell **shell, char *commande);
+void			ft_echo(char **opt, char ***env);
+void			ft_prepare_unsetenv(char ***env, char **opt);
+void			ft_prepare_setenv(char ***env, char **opt);
+int				ft_prepare_cd(char **opt, char ***env);
+int				ft_cd(char **opt, char ***env, char c);
+void			ft_cd_errors(char *newpath, char **home);
+int				ft_cd_home(char ***env, char **home);
+int				ft_verif_home(char **opt, char **home, char ***env);
+int				ft_home_process(char **home, char *split);
+char			*ft_cdsplit(char *split, char *home);
 
 #endif
