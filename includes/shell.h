@@ -6,7 +6,7 @@
 /*   By: hmadad <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/14 14:43:05 by hmadad            #+#    #+#             */
-/*   Updated: 2017/04/19 15:34:44 by hmadad           ###   ########.fr       */
+/*   Updated: 2017/04/20 13:04:25 by mcastres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ typedef struct		s_history
 
 }					t_history;
 
+int				is_pipe(char **commands, t_shell **shell);
 int				ft_21sh(char ***env);
 t_history		*ft_init_term(t_shell **shell);
 void			ft_read_commande(t_shell **shell);

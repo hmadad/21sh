@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_exec_commande.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hmadad <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hmadad <hmadad@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/17 12:39:10 by hmadad            #+#    #+#             */
-/*   Updated: 2017/04/19 15:34:42 by hmadad           ###   ########.fr       */
+/*   Updated: 2017/04/20 13:12:21 by mcastres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,16 +46,19 @@ void	ft_process2(t_shell **shell, char *commande)
 	while ((s->all)[i])
 	{
 		s->opt = ft_strsplit(s->all[i], ' ');
-		tmp = ft_strtrim((s->all)[i]);
-		if (!(commande = ft_strbchr(tmp, ' ')))
-			commande = ft_strtrim((s->all)[i]);
-		if (ft_special_commande(shell, commande) == 0)
-			ft_check_commande(shell, commande);
-		if (tmp)
-			ft_strdel(&tmp);
-		ft_strdel(&commande);
-		if (s->opt)
-			ft_freetab(&(s->opt));
+		if (!is_pipe(s->opt, &s))
+		{
+			tmp = ft_strtrim((s->all)[i]);
+			if (!(commande = ft_strbchr(tmp, ' ')))
+				commande = ft_strtrim((s->all)[i]);
+			if (ft_special_commande(shell, commande) == 0)
+				ft_check_commande(shell, commande);
+			if (tmp)
+				ft_strdel(&tmp);
+			ft_strdel(&commande);
+			if (s->opt)
+				ft_freetab(&(s->opt));
+		}
 		i++;
 	}
 	if (s->path)
@@ -82,13 +85,11 @@ void	ft_exec_commande(t_shell **shell)
 	char	*tmp;
 
 	s = *shell;
-	s->line = ft_strtrim(s->line);
-	if (s->line)
-	{
-		while (ft_strchr(s->line, '~') && (tmp = ft_getenv(s->env, "HOME")))
-			s->line = ft_change_home_sign(s->line, tmp, '~');
-		if (ft_strcmp(s->line, "") != 0 && ft_strcmp(s->line, "\n") != 0)
-			ft_process(shell);
-		ft_strdel(&(s->line));
-	}
+	if (!s->line)
+		return ;
+	while (ft_strchr(s->line, '~') && (tmp = ft_getenv(s->env, "HOME")))
+		s->line = ft_change_home_sign(s->line, tmp, '~');
+	if (ft_strcmp(s->line, "") != 0 && ft_strcmp(s->line, "\n") != 0)
+		ft_process(shell);
+	ft_strdel(&(s->line));
 }

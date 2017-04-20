@@ -44,3 +44,11 @@ pwd
 
 clear
 
+ls | wc -c
+ls
+ls -l | cat -e
+ls -l | cat -e
+ls -l | cat -e
+clear
+
+ls
