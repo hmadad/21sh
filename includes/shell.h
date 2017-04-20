@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   shell.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hmadad <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hmadad <hmadad@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/14 14:43:05 by hmadad            #+#    #+#             */
-/*   Updated: 2017/04/19 12:49:22 by hmadad           ###   ########.fr       */
+/*   Updated: 2017/04/19 14:44:35 by mcastres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,15 @@
 # define SHELL_H
 
 # include <../libft/libft.h>
+# include <sys/types.h>
+# include <sys/stat.h>
 # include <errno.h>
 # include <sys/wait.h>
 # include <signal.h>
 # include <termcap.h>
 # include <term.h>
 # include <stdio.h>
+# include <dirent.h>
 
 # define RED   "\x1B[31m"
 # define GRN   "\x1B[32m"
@@ -52,6 +55,7 @@ typedef struct		s_history
 
 }					t_history;
 
+int				is_pipe(char **commands, t_shell **shell);
 int				ft_21sh(char ***env);
 t_history		*ft_init_term(t_shell **shell);
 void			ft_read_commande(t_shell **shell);

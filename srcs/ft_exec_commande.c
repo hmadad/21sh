@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_exec_commande.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hmadad <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hmadad <hmadad@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/17 12:39:10 by hmadad            #+#    #+#             */
-/*   Updated: 2017/04/19 13:08:36 by hmadad           ###   ########.fr       */
+/*   Updated: 2017/04/19 16:00:32 by mcastres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,16 +46,19 @@ void	ft_process2(t_shell **shell, char *commande)
 	while ((s->all)[i])
 	{
 		s->opt = ft_strsplit(s->all[i], ' ');
-		tmp = ft_strtrim((s->all)[i]);
-		if (!(commande = ft_strbchr(tmp, ' ')))
-			commande = ft_strtrim((s->all)[i]);
-		if (ft_special_commande(shell, commande) == 0)
-			ft_check_commande(shell, commande);
-		if (tmp)
-			ft_strdel(&tmp);
-		ft_strdel(&commande);
-		if (s->opt)
-			ft_freetab(&(s->opt));
+		if (!is_pipe(s->opt, &s))
+		{
+			tmp = ft_strtrim((s->all)[i]);
+			if (!(commande = ft_strbchr(tmp, ' ')))
+				commande = ft_strtrim((s->all)[i]);
+			if (ft_special_commande(shell, commande) == 0)
+				ft_check_commande(shell, commande);
+			if (tmp)
+				ft_strdel(&tmp);
+			ft_strdel(&commande);
+			if (s->opt)
+				ft_freetab(&(s->opt));
+		}
 		i++;
 	}
 	if (s->path)

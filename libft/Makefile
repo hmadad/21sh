@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hmadad <marvin@42.fr>                      +#+  +:+       +#+         #
+#    By: hmadad <hmadad@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/06 11:04:43 by hmadad            #+#    #+#              #
-#    Updated: 2017/03/29 14:56:54 by hmadad           ###   ########.fr        #
+#    Updated: 2017/04/19 15:49:20 by mcastres         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -79,11 +79,21 @@ SRCS = ft_memset.c \
 	get_next_line.c \
 	ft_strlen2d.c \
 	ft_strbchr.c \
-	ft_free_tab.c \
+	ft_freetab.c \
 	ft_duptab2d.c \
 	ft_ctostr.c \
 	ft_straddat.c \
 	ft_strdelat.c \
+	ft_tabbpushback.c \
+	ft_tabblen.c \
+	ft_tabbcreate.c \
+	ft_freetabb.c \
+	ft_tabdup.c \
+	ft_tablen.c \
+	ft_tabpushback.c \
+	ft_tabcreate.c \
+	ft_strtabb.c \
+	ft_freetab.c \
 
 OBJECTS = $(SRCS:.c=.o)
 

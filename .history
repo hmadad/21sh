@@ -1,0 +1,98 @@
+ls
+pwd
+ls ; pwd ; echo Bonjour
+ls ; pwd ; echo Bonjour
+ls ; pwd ; echo Bonjour
+ls ; pwd ; echo Bonjour
+ls ; pwd ; echo Bonjour
+ls ; pwd ; echo Bonjour
+ls ; pwd ; echo Bonjour
+ls ; pwd ; echo Bonjour
+ls ; pwd ; echo Bonjour
+ls ; pwd ; echo Bonjour
+ls ; pwd ; echo Bonjour
+ls ; pwd ; echo Bonjour
+ls
+ls | bonjour
+ls | echo
+ls ; echo
+ls ; echo
+ls ; echo
+ls
+ls | echo
+ls ; echo
+ls | echo
+ls | echo
+ls | echo
+ls | echo
+ls | echo
+ls | echo
+ls | echo
+ls | echo
+ls | echo ; pwd
+ls | echo
+ls | echo
+ls | echo Bonjour
+ls | echo Bonjour
+ls | echo Bonjour
+ls -l | echo Bonjour
+ls -l | echo Bonjour
+ls -l | echo Bonjour
+ls -l | echo Bonjour
+fdf
+ls -l | echo Bonjour
+ls -l | echo Bonjour
+ls -l | echo Bonjour
+ls -l | echo Bonjour
+ls -l | echo Bonjour
+ls -l | echo Bonjour
+ls -l | echo Bonjour
+ls -l | echo Bonjour
+ls -l | echo Bonjour
+exit
+ls | echo Bonjour
+exit
+ls | echo Bonjour
+ls | echo Bonjour
+ls | cat -e
+ls | cat -e
+ls | ct -e
+ls | cat -e
+ls
+ls | cat -e
+ls | cat -e ; ls | cat -e
+ls | wc -c
+ls |
+|
+| ls
+ls | cat -e
+ls | cat -e echo
+ls | cat -e
+ls | cat -e
+ls | cat -e
+ls | cat -e
+ls
+pwd
+ls | cat -e
+ls | cat -e
+ls | cat -e
+echo Bonjour toi | cat -e
+ls -l | wc -c
+ls | echo Bon | wc -c
+clear
+mkdir test ; cd test ; ls -a ; ls | cat | wc -c > fifi ; cat fifi
+rm -rf test
+clear
+echo | ls
+echo | ls | wc -c
+wc -c
+echo Hello+ | ls | wc -c
+mkdir test
+test | cd
+rm -rf test
+ls
+du | sort -nr | less
+du | sort -nr | less
+ls
+
+wesh alors

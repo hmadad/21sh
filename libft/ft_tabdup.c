@@ -1,29 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free_tab.c                                      :+:      :+:    :+:   */
+/*   ft_tabdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hmadad <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: mcastres <mcastres@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/26 13:18:10 by hmadad            #+#    #+#             */
-/*   Updated: 2017/01/17 12:30:14 by hmadad           ###   ########.fr       */
+/*   Created: 2017/02/07 11:46:42 by mcastres          #+#    #+#             */
+/*   Updated: 2017/03/08 12:49:21 by mcastres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void		ft_freetab(char ***tab)
+char	**ft_tabdup(char **tab)
 {
-	size_t	i;
-	char	*str;
+	char	**new;
+	int		i;
 
 	i = 0;
-	while ((str = (*tab)[i]))
+	if (!(new = (char **)malloc(sizeof(char *) * ft_tablen(tab) + 1)))
+		return (NULL);
+	while (tab[i])
 	{
-		ft_strdel(&str);
+		new[i] = ft_strdup(tab[i]);
 		i++;
 	}
-	ft_strdel(&(*tab)[i]);
-	free(*tab);
-	*tab = NULL;
+	new[i] = NULL;
+	return (new);
 }

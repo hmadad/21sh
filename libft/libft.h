@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hmadad <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hmadad <hmadad@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/04 08:03:51 by hmadad            #+#    #+#             */
-/*   Updated: 2017/03/29 14:58:47 by hmadad           ###   ########.fr       */
+/*   Updated: 2017/04/19 15:39:41 by mcastres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,15 @@ typedef struct	s_list
 	struct s_list	*next;
 }				t_list;
 
+void			ft_strtabb(char ***tab);
+char			**ft_tabcreate(char *content);
+char			**ft_tabpushback(char **tab, char *content);
+size_t			ft_tablen(char **tab);
+char			**ft_tabdup(char **tab);
+size_t			ft_tabblen(char ***tab);
+char			***ft_tabbcreate(char **content);
+void			ft_freetabb(char ***tab, int len);
+char			***ft_tabbpushback(char ***tab, char **content);
 void			*ft_memset(void *s, int c, size_t n);
 void			ft_bzero(void *s, size_t n);
 void			*ft_memcpy(void *dest, const void *src, size_t n);
