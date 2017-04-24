@@ -6,7 +6,7 @@
 #    By: hmadad <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/12/12 14:56:33 by hmadad            #+#    #+#              #
-#    Updated: 2017/04/20 13:05:34 by mcastres         ###   ########.fr        #
+#    Updated: 2017/04/24 11:56:03 by hmadad           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,6 +38,7 @@ SRCS_NAME = ft_21sh.c \
 			ft_trim.c \
 			ft_get_pwd.c \
 			ft_pipette.c \
+			ft_move_to_word.c \
 			main.c \
 
 SRC = $(addprefix $(SRC_PATH)/, $(SRCS_NAME))

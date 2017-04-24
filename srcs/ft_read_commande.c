@@ -6,7 +6,7 @@
 /*   By: hmadad <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/14 17:00:05 by hmadad            #+#    #+#             */
-/*   Updated: 2017/04/19 15:34:39 by hmadad           ###   ########.fr       */
+/*   Updated: 2017/04/24 17:47:17 by hmadad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,8 @@ void	ft_read_commande(t_shell **shell)
 			ft_escape(shell);
 		else if (buf[0] == 127 || (buf[0] == 27 && buf[2] == '3'))
 			ft_delete_char(shell, buf);
+		else if (buf[0] == 27 && (buf[2] == '6' || buf[2] == '5'))
+			ft_move_to_word(shell, buf);
 		else
 			ft_print_char(shell, buf);
 	}

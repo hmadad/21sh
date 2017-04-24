@@ -6,7 +6,7 @@
 /*   By: hmadad <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/14 14:43:05 by hmadad            #+#    #+#             */
-/*   Updated: 2017/04/20 13:04:25 by mcastres         ###   ########.fr       */
+/*   Updated: 2017/04/24 17:47:19 by hmadad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,5 +88,7 @@ int				ft_cd_home(char ***env, char **home);
 int				ft_verif_home(char **opt, char **home, char ***env);
 int				ft_home_process(char **home, char *split);
 char			*ft_cdsplit(char *split, char *home);
+void			ft_move_to_word(t_shell **shell, char *buf);
+void			ft_del_line(t_shell **shell);
 
 #endif

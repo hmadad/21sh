@@ -1,54 +1,9 @@
-un
-deux
-trois
-quatre
-cinq
-six
-sept
-huit
-neuf
-dix
-onze
-douze
-treize
-quatorze
-quinze
-seize
-dix-sept
-dix-huit
-dix-neuf
-vingt
-vingt et un
-vingt deux
-vingt troix
-vingt quatre
-vingt cinq
-ls
-env
-ls
-ls
-ls
-ls
-ls
-ls
-ls
-ls
-ls
-ls
-unsetenv PATH
-ls
+bonjour
+ok
+lol
+ca marche niquel
+Bonjour a tous comment allez vous ?
+Bonjour a tous comment allez vous ?
+l
+..
 cd ..
-ls
-exit
-pwd
-
-clear
-
-ls | wc -c
-ls
-ls -l | cat -e
-ls -l | cat -e
-ls -l | cat -e
-clear
-
-ls
