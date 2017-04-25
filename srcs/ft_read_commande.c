@@ -6,7 +6,7 @@
 /*   By: hmadad <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/14 17:00:05 by hmadad            #+#    #+#             */
-/*   Updated: 2017/04/24 17:47:17 by hmadad           ###   ########.fr       */
+/*   Updated: 2017/04/25 13:36:37 by hmadad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ void	ft_read_commande(t_shell **shell)
 	s = *shell;
 	while (42)
 	{
+		//printf("position = %d\npos_max = %d\n", s->position, s->pos_max);
 		ft_bzero(buf, 5);
 		read(0, buf, 4);
 		if (ft_strcmp(buf, "\n") == 0)
@@ -75,7 +76,7 @@ void	ft_read_commande(t_shell **shell)
 			ft_reset_pos(shell);
 			s->s_h = 0;
 		}
-		else if (buf[0] == 27 && ft_strlen(buf) == 3 && buf[2] != '3')
+		else if (buf[0] == 27 && (buf[2] == 'A' || buf[2] == 'B'))
 			ft_history_key(shell, buf);
 		else if (buf[0] == 27 && ft_strlen(buf) == 1)
 			ft_escape(shell);
@@ -83,6 +84,8 @@ void	ft_read_commande(t_shell **shell)
 			ft_delete_char(shell, buf);
 		else if (buf[0] == 27 && (buf[2] == '6' || buf[2] == '5'))
 			ft_move_to_word(shell, buf);
+		else if (buf[0] == 27 && (buf[2] == 'F' || buf[2] == 'H'))
+			ft_home_end(shell, buf);
 		else
 			ft_print_char(shell, buf);
 	}
