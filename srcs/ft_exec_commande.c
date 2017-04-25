@@ -6,7 +6,7 @@
 /*   By: hmadad <hmadad@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/17 12:39:10 by hmadad            #+#    #+#             */
-/*   Updated: 2017/04/20 13:12:21 by mcastres         ###   ########.fr       */
+/*   Updated: 2017/04/25 15:05:15 by hmadad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ int		ft_special_commande(t_shell **shell, char *commande)
 		ft_exit(shell);
 	else if (ft_strcmp(commande, "echo") == 0)
 		ft_echo(s->opt, &(s->env));
+	else if (ft_strcmp(commande, "history") == 0)
+		ft_print_history();
 	else
 		return (0);
 	return (1);

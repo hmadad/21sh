@@ -6,7 +6,7 @@
 /*   By: hmadad <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/14 14:43:05 by hmadad            #+#    #+#             */
-/*   Updated: 2017/04/25 13:36:39 by hmadad           ###   ########.fr       */
+/*   Updated: 2017/04/25 15:05:17 by hmadad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,5 +91,5 @@ char			*ft_cdsplit(char *split, char *home);
 void			ft_move_to_word(t_shell **shell, char *buf);
 void			ft_del_line(t_shell **shell);
 void			ft_home_end(t_shell **shell, char *buf);
-
+void			ft_print_history();
 #endif

@@ -6,7 +6,7 @@
 /*   By: hmadad <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/14 17:00:05 by hmadad            #+#    #+#             */
-/*   Updated: 2017/04/25 13:36:37 by hmadad           ###   ########.fr       */
+/*   Updated: 2017/04/25 15:00:22 by hmadad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,16 @@ void	ft_escape(t_shell **shell)
 	ft_putstr(RED "-~[ Fermeture du Terminal ]~-\n" RESET);
 	tcsetattr(0, TCSADRAIN, &(s->default_term));
 	exit(0);
+}
+
+void	ft_clear(t_shell **shell)
+{
+	t_shell	*s;
+
+	s = *shell;
+	tputs(tgetstr("cl", NULL), 0, ft_putc);
+	ft_prompt(s->env);
+	ft_putstr(s->line);
 }
 
 void	ft_reset_pos(t_shell **shell)
@@ -86,6 +96,8 @@ void	ft_read_commande(t_shell **shell)
 			ft_move_to_word(shell, buf);
 		else if (buf[0] == 27 && (buf[2] == 'F' || buf[2] == 'H'))
 			ft_home_end(shell, buf);
+		else if (buf[0] == 0x0C)
+			ft_clear(shell);
 		else
 			ft_print_char(shell, buf);
 	}
