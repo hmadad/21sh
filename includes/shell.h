@@ -6,7 +6,7 @@
 /*   By: hmadad <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/14 14:43:05 by hmadad            #+#    #+#             */
-/*   Updated: 2017/04/25 15:05:17 by hmadad           ###   ########.fr       */
+/*   Updated: 2017/04/26 15:11:59 by hmadad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <signal.h>
 # include <termcap.h>
 # include <term.h>
+# include <sys/ioctl.h>
 # include <stdio.h>
 
 # define RED   "\x1B[31m"
@@ -92,4 +93,7 @@ void			ft_move_to_word(t_shell **shell, char *buf);
 void			ft_del_line(t_shell **shell);
 void			ft_home_end(t_shell **shell, char *buf);
 void			ft_print_history();
+void			ft_redirection(char **commands);
+void			ft_move_up_down(t_shell **shell, char *buf);
+
 #endif

@@ -6,7 +6,7 @@
 /*   By: hmadad <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/14 17:00:05 by hmadad            #+#    #+#             */
-/*   Updated: 2017/04/25 15:00:22 by hmadad           ###   ########.fr       */
+/*   Updated: 2017/04/26 16:00:47 by hmadad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ void	ft_read_commande(t_shell **shell)
 			ft_reset_pos(shell);
 			s->s_h = 0;
 		}
-		else if (buf[0] == 27 && (buf[2] == 'A' || buf[2] == 'B'))
+		else if (buf[0] == 27 && (buf[2] == 'A' || buf[2] == 'B' || buf[2] == 'C' || buf[2] == 'D'))
 			ft_history_key(shell, buf);
 		else if (buf[0] == 27 && ft_strlen(buf) == 1)
 			ft_escape(shell);
@@ -98,6 +98,8 @@ void	ft_read_commande(t_shell **shell)
 			ft_home_end(shell, buf);
 		else if (buf[0] == 0x0C)
 			ft_clear(shell);
+		else if (buf[0] == 27 && (buf[1] == 'P' || buf[1] == 'O'))
+			ft_move_up_down(shell, buf);
 		else
 			ft_print_char(shell, buf);
 	}
